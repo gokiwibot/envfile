@@ -111,7 +111,7 @@ with:
       }
 
       core.exportVariable(newKey, secrets[key])
-      core.info(`Exported secret ${newKey}`)
+      core.info(`Exported secret ${newKey}, length: ${secrets[key]?.length}`)
     }
 
     if (!noFile) {
