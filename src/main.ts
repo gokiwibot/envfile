@@ -95,7 +95,7 @@ with:
         }
       }
 
-      envFileContent += `${newKey}=${secrets[key]}\n`
+      envFileContent += `${newKey}=${secrets[key]?.replaceAll('\n','\\n')}\n`
 
       if (noEnv) {
         continue
