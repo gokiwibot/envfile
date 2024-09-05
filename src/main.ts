@@ -95,7 +95,9 @@ with:
         }
       }
 
-      envFileContent += `${newKey}=${secrets[key]?.replaceAll('\n','\\n')}\n`
+      const value = secrets[key].replace(/\n/g, '\\n')
+
+      envFileContent += `${newKey}=${value}\n`
 
       if (noEnv) {
         continue
@@ -111,7 +113,7 @@ with:
       }
 
       core.exportVariable(newKey, secrets[key])
-      core.info(`Exported secret ${newKey}, length: ${secrets[key]?.length}`)
+      core.info(`Exported secret ${newKey}, length: ${value.length}`)
     }
 
     if (!noFile) {
